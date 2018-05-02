@@ -1,27 +1,26 @@
-# Library
+``# Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.This is a library management system single-page front-end app based on Angular 5, Angular Material and CovalentUI and its written in typescript.It consists of 4 modules,namely app module, books module, customers module and users modules module.The last three are lazy loaded features modules with their own routing modules.The books module has the create-book, update-book ,and books master view components.The customers module has the create-customer, update-customer,and customers master view compoments.The users module has the create-user, update-user,and users master view components.
 
-## Development server
+The project uses JSON web tokens authentication.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#Issues
 
-## Code scaffolding
+The project is still work in progress.There is a problem with scrolling in the main page and a solution is currently being implemented.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#How to use
 
-## Build
+Clone or download the project at `https://github/godycnyama/jobs-portal.git`  to a local directory.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+cd to the jobs-portal directory
 
-## Running unit tests
+run `npm install`   to install the project dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+run `ng serve` to run the application
 
-## Running end-to-end tests
+Navigate to  `http://localhost:4200/` in the browser to see the application running
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
