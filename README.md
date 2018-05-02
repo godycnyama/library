@@ -1,6 +1,6 @@
 # Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.This is a library management system single-page front-end app based on Angular 5, Angular Material and CovalentUI and its written in typescript.It consists of 4 modules,namely app module, books module, customers module and users modules module.The last three are lazy loaded features modules with their own routing modules.The books module has the create-book, update-book ,and books master view components.The customers module has the create-customer, update-customer,and customers master view compoments.The users module has the create-user, update-user,and users master view components.
+This is a library management system single-page front-end app based on Angular 5, Angular Material and CovalentUI and its written in typescript.It consists of 4 modules,namely app module, books module, customers module and users modules module.The last three are lazy loaded features modules with their own routing modules.The books module has the create-book, update-book ,and books master view components.The customers module has the create-customer, update-customer,and customers master view compoments.The users module has the create-user, update-user,and users master view components.
 
 The project uses JSON web tokens authentication.
 
