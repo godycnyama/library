@@ -1,0 +1,33 @@
+<div [ngBusy]="busy">
+    <mat-card layout="column">
+      <div style="margin:30px">
+          <br>
+          <h3>Loan Summary</h3>
+          <br>
+          <div layout=row>
+            <p>ISBN:</p>
+            <p>{{loan.isbn}}</p>
+          </div>
+          <div layout=row>
+              <p>Title:</p>
+              <p>{{loan.title}}</p>
+          </div>
+          <div layout=row>
+              <p>Date Loaned:</p>
+              <p>{{loan.loaned_date}}</p>
+          </div>
+          <div layout=row>
+              <p>Due Date:</p>
+              <p>{{loan.due_date}}</p>
+          </div>
+          <div layout=row>
+              <p>Loaned To:</p>
+              <p>{{loan.firstName}} {{loan.lastName}}</p>
+          </div>
+          <button mat-raised-button color="primary"(click)="loanMore()"><mat-icon>add</mat-icon> Loan more books</button>
+          <button mat-raised-button color="primary"(click)="bookLoans()"><mat-icon>add</mat-icon> Book loans</button>
+      </div>            
+    </mat-card>
+  </div>
+  
+  

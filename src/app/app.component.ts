@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef,Component } from '@angular/core';
+import { TdMediaService } from '@covalent/core/media';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'LibrarySYS';
+  constructor(public changeDetectorRef: ChangeDetectorRef,public media: TdMediaService) {}
 }

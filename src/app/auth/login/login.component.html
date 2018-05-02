@@ -1,0 +1,24 @@
+<mat-card flex-gt-sm="50" layout-align = "center center" >            
+    <form [formGroup]="formGroup"  (ngSubmit) = "login()" style="margin:30px" layout="column">
+          <h3 layout-align = "center center">Login</h3>
+          <mat-form-field>
+              <input id = "email" name="email" matInput placeholder="Login Email" [formControl] = "formGroup.controls.email">
+              <mat-error *ngIf="formGroup.controls['email'].errors?.required">Email is required</mat-error>
+              <mat-error *ngIf="formGroup.controls['email'].errors?.maxLength && !formGroup.controls['email'].errors?.required">Email must not exceeed 150 characters</mat-error>      
+          </mat-form-field>
+          <mat-form-field>
+              <input id = "password" name="password" matInput placeholder="Temporary Password" [formControl] = "formGroup.controls.password">
+              <mat-error *ngIf="formGroup.controls['password'].errors?.required">Password is required</mat-error>
+              <mat-error *ngIf="formGroup.controls['password'].errors?.maxLength && !formGroup.controls['password'].errors?.required">Password must not exceeed 150 characters</mat-error>      
+          </mat-form-field>
+          <div layout="row">
+                  <div>
+                      <button type="submit" mat-raised-button color="primary">Login</button>
+                  </div>
+                  <div flex-offset-gt-xs="5" flex-offset-xs="5">
+                      <button type="button" mat-raised-button color="accent" (click) = "back()">Cancel</button>
+                  </div>  
+          </div>   
+    </form>
+   <br>
+  </mat-card>

@@ -1,0 +1,63 @@
+<div [ngBusy]="busy">
+    <mat-card layout="column">
+      <div style="margin:30px">
+          <br>
+          <button mat-raised-button color="primary" routerLink="/books/create-loan"><mat-icon>add</mat-icon> Loan book</button>
+          <br>
+          <h3>Search for Book Loans</h3>
+      </div>            
+      <form [formGroup]="formGroup"   style="margin:30px" layout="column">
+            <div layout="row">
+                    <mat-form-field>
+                        <mat-select id = "searchBy" name="searchBy" placeholder="Search By" [formControl] = "formGroup.controls.searchBy">
+                          <mat-option *ngFor="let searchBy of searchByOptions" [value]="searchBy">{{searchBy}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field flex-offset-gt-sm="5" flex-offset-xs="5" *ngIf="formGroup.controls.searchBy.value == 'ISBN'|| formGroup.controls.searchBy.value == 'ID'|| formGroup.controls.searchBy.value == 'Category'|| formGroup.controls.searchBy.value == 'Title'">
+                      <input id = "searchTerm" name="searchTerm" matInput type="text" placeholder="Enter {{formGroup.controls.searchBy.value}}" [formControl] = "formGroup.controls.searchTerm">
+                    </mat-form-field>
+                    <div flex-offset-gt-xs="5" flex-offset-xs="5" style="margin-top:15px">
+                        <button mat-raised-button color="primary" (click) = "search()"><mat-icon>search</mat-icon> Search</button>
+                    </div>        
+            </div>
+            <td-paging-bar #pagingBar [pageSize]="formGroup.controls.pageSize" [total]="filteredTotal" (change)="page($event)">
+              <span hide-xs>Rows per page:</span>
+              <mat-select [style.width.px]="50" [formControl]="formGroup.controls.pageSize">
+                <mat-option *ngFor="let size of pageSizeOptions" [value]="size">
+                  {{size}}
+                </mat-option>
+              </mat-select>
+              {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+            </td-paging-bar>
+       </form>
+      
+        
+        <table td-data-table>
+            <thead>
+              <tr td-data-table-column-row>
+                <th td-data-table-column
+                    *ngFor="let column of columns"
+                    [numeric]="column.numeric">
+                  {{column.label}}
+                </th>
+                <th td-data-table-column>
+                  <span>Actions</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr td-data-table-row *ngFor="let row of books">
+                <td td-data-table-cell *ngFor="let column of columns" [numeric]="column.numeric">
+                  {{column.format ? column.format(row[column.name]) : row[column.name]}}
+                </td>
+                <td td-data-table-cell >
+                  <button mat-raised-button color="primary" (click)="returnBook(row)" *ngIf="row.status == 'Out'">Return book</button>
+                  <button mat-raised-button color="primary" (click)="cancelReturn(row)" *ngIf="row.status == 'In'" >Cancel return</button>
+                  <button mat-icon-button matTooltip="Delete loan" (click)="delete(row)" ><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </mat-card>  
+  </div>
+  

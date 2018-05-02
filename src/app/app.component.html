@@ -1,20 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<div class="nav-container" [class.nav-is-mobile]="media.registerQuery('xs')|async">
+    <mat-toolbar color="primary" class="nav-toolbar">
+      <button mat-icon-button (click)="snav.toggle()" *ngIf="media.registerQuery('xs')|async"><mat-icon>menu</mat-icon></button>
+      <h1 class="nav-app-name">LibrarySYS</h1>
+      <button mat-button routerLink="/books" routerLinkActive="active" *ngIf="media.registerQuery('gt-xs')|async">Books</button>
+      <button mat-button routerLink="/customers" routerLinkActive="active" *ngIf="media.registerQuery('gt-xs')|async">Customers</button>
+      <button mat-button routerLink="/users" routerLinkActive="active" *ngIf="media.registerQuery('gt-xs')|async">Users</button>
+      <button mat-button routerLink="/login" routerLinkActive="active" *ngIf="media.registerQuery('gt-xs')|async">Log in</button>
+      <button mat-button [matMenuTriggerFor]="account" *ngIf="media.registerQuery('gt-xs')|async">Manage Account</button>    
+    </mat-toolbar>
+      <mat-menu #account="matMenu">
+        <a mat-menu-item routerLink="/change-password">Change Password</a>
+        <a mat-menu-item routerLink="/reset-password">Reset Password</a>
+        <a mat-menu-item routerLink="/override-password">Override Password</a>
+      </mat-menu>
+      
+
+    <mat-sidenav-container class="nav-sidenav-container">
+      <mat-sidenav #snav [fixedInViewport]="media.registerQuery('xs')|async" fixedTopGap="56">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/books" (click)="snav.toggle()">Books</a>
+          <a mat-list-item routerLink="/customers" (click)="snav.toggle()">Customers</a>
+          <a mat-list-item routerLink="/users" (click)="snav.toggle()">Users</a>
+          <a mat-list-item routerLink="/login" (click)="snav.toggle()">Log in</a>
+          <a mat-list-item routerLink="/change-password" (click)="snav.toggle()">Change Password</a>
+          <a mat-list-item routerLink="/reset-password" (click)="snav.toggle()">Reset-Password</a>
+          <a mat-list-item routerLink="/override-password" (click)="snav.toggle()">Override Password</a>   
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

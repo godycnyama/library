@@ -1,0 +1,52 @@
+<div [ngBusy] = "busy">
+  <mat-card flex-gt-sm="50" >            
+    <form [formGroup]="formGroup"  (ngSubmit) = "updateCustomer()" style="margin:30px" layout="column">
+          <h3>Update Customer</h3>
+          <mat-form-field>
+            <input id = "firstName" name="firstName" matInput placeholder="First Name" [formControl] = "formGroup.controls.title">
+            <mat-error *ngIf="formGroup.controls['firstName'].errors?.required">First name is required</mat-error>
+            <mat-error *ngIf="formGroup.controls['firstName'].errors?.maxLength && !formGroup.controls['firstName'].errors?.required">First name must not exceeed 50 characters</mat-error>      
+          </mat-form-field>
+          <mat-form-field>
+            <input id = "lastName" name="lastName" matInput placeholder="Last Name" [formControl] = "formGroup.controls.lastName">
+            <mat-error *ngIf="formGroup.controls['lastName'].errors?.required">Last name is required</mat-error>
+            <mat-error *ngIf="formGroup.controls['lastName'].errors?.maxLength && !formGroup.controls['lastName'].errors?.required">Last name must not exceeed 50 characters</mat-error>      
+          </mat-form-field>
+          <mat-form-field>
+              <mat-select id = "gender" name="gender" placeholder="Gender" [formControl] = "formGroup.controls.gender">
+                <mat-option *ngFor="let gender of genderOptions" [value]="gender">{{gender}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="formGroup.controls['gender'].errors?.required">Gender is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input id = "tel" name="tel" matInput placeholder="Telephone" [formControl] = "formGroup.controls.tel">
+            <mat-error *ngIf="formGroup.controls['tel'].errors?.required">Telephone is required</mat-error>
+            <mat-error *ngIf="formGroup.controls['tel'].errors?.maxLength && !formGroup.controls['tel'].errors?.required">Telephone must not exceeed 150 characters</mat-error>      
+          </mat-form-field>
+          <mat-form-field>
+              <input id = "mobile" name="mobile" matInput placeholder="Mobile" [formControl] = "formGroup.controls.mobile">
+              <mat-error *ngIf="formGroup.controls['mobile'].errors?.required">Mobile is required</mat-error>
+              <mat-error *ngIf="formGroup.controls['mobile'].errors?.maxLength && !formGroup.controls['mobile'].errors?.required">Mobile must not exceeed 50 characters</mat-error>      
+          </mat-form-field>
+          <mat-form-field>
+              <input id = "email" name="email" matInput placeholder="Email" [formControl] = "formGroup.controls.email">
+              <mat-error *ngIf="formGroup.controls['email'].errors?.required">Email is required</mat-error>
+              <mat-error *ngIf="formGroup.controls['email'].errors?.maxLength && !formGroup.controls['email'].errors?.required">Email must not exceeed 150 characters</mat-error>      
+          </mat-form-field>
+          <mat-form-field>
+            <textarea id="address" name="address" matInput placeholder="Address" [formControl] = "formGroup.controls.address" rows="2"></textarea>
+            <mat-error *ngIf="formGroup.controls['address'].errors?.required">Address is required</mat-error>
+            <mat-error *ngIf="formGroup.controls['address'].errors?.maxLength && !formGroup.controls['address'].errors?.required">Address must not exceeed 500 characters</mat-error>      
+          </mat-form-field>
+          <div layout="row">
+                  <div>
+                      <button type="submit" mat-raised-button color="primary">Save</button>
+                  </div>
+                  <div flex-offset-gt-xs="10" flex-offset-xs="5">
+                      <button type="button" mat-raised-button color="accent" (click) = "back()">Cancel</button>
+                  </div>  
+          </div>   
+    </form>
+   <br>
+  </mat-card>
+</div>

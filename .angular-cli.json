@@ -19,7 +19,10 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "../node_modules/@covalent/core/common/platform.css",
+        "styles.css",
+        "../node_modules/ngx-toastr/toastr.css",
+        "../node_modules/angular2-busy/build/style/busy.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
